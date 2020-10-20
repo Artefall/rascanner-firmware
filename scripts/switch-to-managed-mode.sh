@@ -5,6 +5,10 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+echo "Switching to managed mode..."
+
 sudo ip link set $1 down
 sudo iw $1 set type managed
 sudo ip link set $1 up
+
+echo "Switched successfuly"
