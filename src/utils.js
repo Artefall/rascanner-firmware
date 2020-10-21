@@ -1,6 +1,6 @@
 module.exports = {
     processMacAddress: (chunk, lastRecord) => {
-        const DEFAULT_MAC_LENGTH_IN_SYMBOLS = "17";
+        const DEFAULT_MAC_LENGTH_IN_SYMBOLS = 17;
 
         let processableChunk = lastRecord + chunk;
 
