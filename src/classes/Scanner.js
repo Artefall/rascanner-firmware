@@ -6,6 +6,11 @@ class Scanner{
     constructor(interface){
         this.analizer = new Analizer();
         this.processor = new Processor();
-        this.sniffer = new Sniffer();
+        this.sniffer = new Sniffer(interface);
+    }
+
+
+    run(){
+        
     }
 }

@@ -1,19 +1,9 @@
-const {exec} = require('child_process');
-const {processMacAddress} = require('./utils');
+const Scanner = require('./classes/Scanner');
 const { argv } = require('process');
-const interface = argv[2];
-const grepExpFindMac = '([[:xdigit:]]{2}:){5}([[:xdigit:]]{2})';
-const command = `sudo tclet processableChunk = lastRecord + chunk;pdump -i ${interface} -e | grep -o -E '${grepExpFindMac}'`;
-const child = exec(command);
+const interfaceToListen = argv[2];
 
 console.log("NodeJS is running");
 
-let lastRecord = "";
+const scanner = new Scanner(interfaceToListen);
 
-child.stdout.on('data', chunk => {
-    console.log(chunk);
-    let processedMacs = processMacAddress(chunk, lastRecord);
-    
-    console.log(processedMacs);
-});
-
+scanner.run();
