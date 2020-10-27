@@ -1,9 +1,5 @@
-class Processor{
-    constructor(){
-        this.lastRecord = '';
-    }
-
-    processMacAddressSet (chunk){
+module.exports = {
+    processMacAddressChunk: (chunk, lastRecord = "") => {
         
         const DEFAULT_MAC_LENGTH_IN_SYMBOLS = 17;
         const NEW_LINE = '\n';
@@ -16,5 +12,5 @@ class Processor{
         if (lastProcessedMacIncomplete) lastRecord = processedMacAddress.pop();
 
         return processedMacAddress;
-    };
+    }
 }
