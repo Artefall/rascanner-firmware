@@ -6,4 +6,3 @@ if [ -z "$1" ]; then
 fi
 
 ./switch-to-monitor-mode.sh $1 2>/dev/null;
-sudo node ../src/index.js $1;
