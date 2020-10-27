@@ -1,9 +1,10 @@
 const {exec} = require('child_process');
 const {processMacAddress} = require('./utils');
 const { argv } = require('process');
-const INTERFACE = argv[2];
-const COMMAND = `sudo tcpdump -i ${INTERFACE} -e | grep -o -E '([[:xdigit:]]{2}:){5}([[:xdigit:]]{2})'`;
-const child = exec(COMMAND);
+const interface = argv[2];
+const grepExpFindMac = '([[:xdigit:]]{2}:){5}([[:xdigit:]]{2})';
+const command = `sudo tcpdump -i ${interface} -e | grep -o -E '${grepExpFindMac}'`;
+const child = exec(command);
 
 console.log("NodeJS is running");
 
