@@ -1,16 +1,19 @@
-const Analizer = require('./ScannerComponents/Analizer');
-const Processor = require('./ScannerComponents/Processor');
-const Sniffer = require('./ScannerComponents/Sniffer');
+const {exec} = require('child_process');
+const Processor = require('./Processor');
 
-class Scanner{
-    constructor(interface){
-        this.analizer = new Analizer();
+const GREP_EXP_FIND_MAC = '([[:xdigit:]]{2}:){5}([[:xdigit:]]{2})';
+
+class Scanner{    
+    constructor(interfaceToListen){
+        this.command = `sudo tcpdump -i ${interfaceToListen} -e | grep -o -E '${GREP_EXP_FIND_MAC}'`;
         this.processor = new Processor();
-        this.sniffer = new Sniffer(interface);
     }
 
-
-    run(){
-        
+    run (){
+        this.macAddressStream = exec(this.command).stdout;
+        this.macAddressStream.on('data', this.processor.processMacAddressChunk);
     }
-}
+    
+};
+
+module.exports = Scanner;
