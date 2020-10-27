@@ -3,7 +3,7 @@ const {processMacAddress} = require('./utils');
 const { argv } = require('process');
 const interface = argv[2];
 const grepExpFindMac = '([[:xdigit:]]{2}:){5}([[:xdigit:]]{2})';
-const command = `sudo tcpdump -i ${interface} -e | grep -o -E '${grepExpFindMac}'`;
+const command = `sudo tclet processableChunk = lastRecord + chunk;pdump -i ${interface} -e | grep -o -E '${grepExpFindMac}'`;
 const child = exec(command);
 
 console.log("NodeJS is running");
