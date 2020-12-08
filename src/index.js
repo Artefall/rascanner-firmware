@@ -10,4 +10,4 @@ if (interfaceNotSet) throw new Error(`Interface wasn’t set`);
 
 console.log('NodeJS is running…');
 
-// const scanner = new Scanner(interfaceToListen);
+new Scanner(interfaceToListen);
