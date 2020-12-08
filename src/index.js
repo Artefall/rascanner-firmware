@@ -1,13 +1,11 @@
-const { argv } = require('process');
+// const Scanner = require('./classes/NetCard');
+const NetCard = require('./classes/NetCard');
 
-const Scanner = require('./classes/Scanner');
-
-
-const interfaceToListen = argv[2];
-const interfaceNotSet = !interfaceToListen || interfaceToListen === '';
+const iface = process.argv[2];
+const interfaceNotSet = !iface || iface === '';
 
 if (interfaceNotSet) throw new Error(`Interface wasn’t set`);
 
 console.log('NodeJS is running…');
 
-new Scanner(interfaceToListen);
+new NetCard(iface).pipe.forEach(console.log);

@@ -1,16 +1,11 @@
-const {exec} = require('child_process');
-const Processor = require('./Processor');
+const Processor = require('../handlers/Processor');
 const NetCard = require('./NetCard');
 
-class Scanner{    
-    constructor(interfaceToListen){
-        this.netCard = new NetCard(interfaceToListen);
-        this.processor = new Processor();
-    }
-
-    run (){
-        this.netCard.sniffPackages(this.processor.processMacAddressChunk);
-    }    
-};
+class Scanner {
+	constructor (iface) {
+		this.netCard = new NetCard(iface);
+		this.processor = new Processor();
+	}
+}
 
 module.exports = Scanner;
