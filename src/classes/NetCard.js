@@ -1,6 +1,6 @@
 const Cli = require('./Cli');
 
-class NetCard{
+class NetCard {
 
     constructor(interface){
         this.interface = interface;
